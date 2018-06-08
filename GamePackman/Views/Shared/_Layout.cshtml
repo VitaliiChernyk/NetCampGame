@@ -1,0 +1,27 @@
+﻿@{
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+    @addTagHelper *, AuthoringTagHelpers
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <a asp-controller="HomePage" asp-action="Index">Index</a>
+        <a asp-controller="HomePage" asp-action="About">About</a>
+        <a asp-controller="HomePage" asp-action="Game">About</a>
+    </div>
+<div>
+    @RenderBody()
+</div>
+<div>
+    <p>@DateTime.Now.Year</p>
+</div>
+</body>
+</html>
