@@ -17,11 +17,14 @@
         <a asp-controller="HomePage" asp-action="About">About</a>
         <a asp-controller="HomePage" asp-action="Game">About</a>
     </div>
-<div>
-    @RenderBody()
-</div>
-<div>
-    <p>@DateTime.Now.Year</p>
-</div>
+    <div>
+        @RenderBody()
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+    <div>
+        <p>@DateTime.Now.Year</p>
+    </div>
 </body>
 </html>
