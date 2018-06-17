@@ -14,12 +14,13 @@ namespace GamePackman.Controllers
     public class LoginController : Controller
     {
         UserDataAccessLayour objUser = new UserDataAccessLayour();
-        //s[Route("RegisterUser")]
+        //[Route("RegisterUser")]
         [HttpGet]
         public IActionResult RegisterUser()
         {
             return View();
         }
+        //[Route("RegisterUser")]
         [HttpPost]
         public IActionResult RegisterUser([Bind] UserData user)
         {
@@ -46,6 +47,7 @@ namespace GamePackman.Controllers
         {
             return View();
         }
+        //[Route("Userlogin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UserLogin([Bind] UserData user)

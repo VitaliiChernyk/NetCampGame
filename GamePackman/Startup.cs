@@ -17,21 +17,21 @@ namespace GamePackman
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //.AddRazorPagesOptions(options =>
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.LoginPath = "/Login/UserLogin/";
+                    });
+            //services.AddAuthentication(options =>
             //{
-            //    options.Conventions.AuthorizeFolder("/");
-            //    options.Conventions.AllowAnonymousToPage("/Login");
-            //});
-            services.AddAuthentication(options =>
-            {
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(options =>
-            {
-                options.LoginPath = "/Login/UserLogin/";
+            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //}).AddCookie(options =>
+            //{
+            //    options.LoginPath = "/Login/UserLogin/";
 
-            });
+            //});
             //;//options => { options.LoginPath = "/Login"; });
         }
 
@@ -45,7 +45,11 @@ namespace GamePackman
             }
             app.UseAuthentication();
             app.UseStaticFiles();
-            app.UseMvc(roures => { roures.MapRoute("default", "{controller=Login}/{action=userLogin}/{id?}"); });
+            app.UseMvc(
+                roures =>
+                {
+                    roures.MapRoute("default", "{controller=Login}/{action=UserLogin}/{id?}");
+                });
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
