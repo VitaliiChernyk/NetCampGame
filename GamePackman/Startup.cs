@@ -55,7 +55,7 @@ namespace GamePackman
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();
-            app.UseStaticFiles();
+            app.UseStaticFiles();//allow use files from wwwroot
             app.UseMvc(
                 roures =>
                 {

@@ -12,6 +12,7 @@ namespace GamePackman.Controllers
     {
         public IActionResult UserHome()
         {
+
             return View();
         }
         [HttpGet]
