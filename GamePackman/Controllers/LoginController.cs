@@ -63,7 +63,7 @@ namespace GamePackman.Controllers
                 {
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, user.Username)
+                        new Claim(ClaimTypes.Name, user.UserLogin)
                     };
                     ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);

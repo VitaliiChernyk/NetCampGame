@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using GamePackman.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.Extensions.Configuration;
 
 namespace GamePackman
 {
@@ -22,6 +26,13 @@ namespace GamePackman
                     {
                         options.LoginPath = "/Login/UserLogin/";
                     });
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json");
+
+            IConfiguration Configuration = builder.Build();
+
+            services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings:DefaultConnection")));
             //services.AddAuthentication(options =>
             //{
             //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;

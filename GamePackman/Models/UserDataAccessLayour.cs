@@ -29,7 +29,7 @@ namespace GamePackman.Models
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@FirstName", userData.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", userData.LastName);
-                cmd.Parameters.AddWithValue("@Login", userData.Username);
+                cmd.Parameters.AddWithValue("@Login", userData.UserLogin);
                 cmd.Parameters.AddWithValue("@Password", userData.Password);
                 con.Open();
                 string result = cmd.ExecuteScalar().ToString();
@@ -43,7 +43,7 @@ namespace GamePackman.Models
             {
                 SqlCommand cmd = new SqlCommand("spValidateUserLogin", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Login", userData.Username);
+                cmd.Parameters.AddWithValue("@Login", userData.UserLogin);
                 cmd.Parameters.AddWithValue("@Password", userData.Password);
                 con.Open();
                 string result = cmd.ExecuteScalar().ToString();
