@@ -5,6 +5,11 @@
 }
 
 /*WORLD SETUP*/
+#world {
+    top: 1px;
+    position: absolute;
+}
+
 div.row {
     height: 20px;
 }
@@ -12,6 +17,7 @@ div.row {
     div.row div {
         width: 20px;
         height: 20px;
+        
         /*    border: 1px solid black;*/
         display: inline-block;
         margin: 0px;
