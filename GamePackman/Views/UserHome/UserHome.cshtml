@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "UserHome";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,11 +7,13 @@
         <a asp-action="Logout">Sign Out</a>
     </li>
 </ul>
-@section PackMan {
+@section PackmanJS {
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <link href="~/Styless/Style.css" rel="stylesheet" />
     <script src="~/JavaScript/PackMan.js"></script>
 }
-<h2>UserHome</h2>
-<h3>This is the user home page</h3>
+@*<h2>UserHome</h2>
+    <h3>This is the user home page</h3>*@
 <div id="container"></div>
 <div id="world"></div>
 

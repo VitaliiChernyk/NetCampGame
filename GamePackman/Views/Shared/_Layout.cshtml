@@ -11,25 +11,38 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
 
+    @*<environment names="PackmanEnv">*@
+    @*@RenderSection("PackmanJS", required: false)*@
+    @*</environment>*@
 </head>
 <body>
+    <div>
+
+        @RenderBody()
+
+        @if (IsSectionDefined("PackmanJS"))
+        {
+            @RenderSection("PackmanJS")
+        }
+
+        @*<environment names="PackmanEnv">*@
+
+        @*, required: false)*@
+        @*</environment>*@
+        @*@if (_env.EnvironmentName == "PackmanEnv" )
+            //&& IsSectionDefined("PackmanJS"))
+            {
+                IgnoreSection("PackmanJS");
+            }*@
+    </div>
+
     <div>
         <a asp-controller="Login" asp-action="UserLogin">Index</a>
         <a asp-controller="Login" asp-action="About">About</a>
         <a asp-controller="UserHome" asp-action="UserHome">Game</a>
     </div>
-    <div>
-        @RenderBody()
-        <environment names="PackmanEnv">
-            @RenderSection("PackMan", required: false)
-        </environment>
-        @if (_env.EnvironmentName == "PackmanEnv" && IsSectionDefined("PackMan"))
-        {
-            IgnoreSection("PackMan");
-        }
-    </div>
+
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
