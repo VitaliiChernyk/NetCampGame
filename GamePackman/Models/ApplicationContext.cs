@@ -8,7 +8,7 @@ namespace GamePackman.Models
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext(DbContextOptions opts) : base(opts) { }
+        public ApplicationContext(DbContextOptions<ApplicationContext> opts) : base(opts) { }
         public DbSet<UserData> UserData { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

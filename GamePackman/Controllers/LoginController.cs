@@ -13,6 +13,7 @@ namespace GamePackman.Controllers
     //[Route("Login")]
     public class LoginController : Controller
     {
+        //ApplicationContext appContext = new ApplicationContext();
         UserDataAccessLayour objUser = new UserDataAccessLayour();
         //[Route("RegisterUser")]
         [HttpGet]

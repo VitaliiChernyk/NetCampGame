@@ -26,13 +26,14 @@ namespace GamePackman
                     {
                         options.LoginPath = "/Login/UserLogin/";
                     });
-            var builder = new ConfigurationBuilder()
+            IConfigurationRoot Configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json");
+            .AddJsonFile("appsettings.json").Build();
 
-            IConfiguration Configuration = builder.Build();
+            //IConfiguration Configuration = builder.Build();
 
-            services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings:DefaultConnection")));
+            services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            //Configuration.GetConnectionString("ConnectionStrings:DefaultConnection")
             //services.AddAuthentication(options =>
             //{
             //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
